@@ -14,4 +14,8 @@ function authenticateToken(req, res, next) {
   }
 }
 
+// revalidation jwt
+//blacklisting token
+//regenerating token
+
 module.exports = authenticateToken;
