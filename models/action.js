@@ -1,6 +1,6 @@
 // models/action.js
 module.exports = (sequelize, DataTypes) => {
-  const Action = sequelize.define("Action", {
+  const Action = sequelize.define('Action', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
