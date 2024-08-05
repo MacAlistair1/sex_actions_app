@@ -1,5 +1,6 @@
 // services/emailService.js
 const nodemailer = require("nodemailer");
+require("dotenv").config(); // Load environment variables from .env file
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

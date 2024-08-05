@@ -1,0 +1,60 @@
+sex-actions-app/
+├── config/
+│   └── config.js
+├── models/
+│   ├── index.js
+│   ├── user.js
+│   ├── action.js
+│   ├── request.js
+│   ├── message.js
+│   ├── block.js
+│   └── complaint.js
+├── routes/
+│   ├── auth.js
+│   ├── action.js
+│   ├── request.js
+│   ├── message.js
+│   ├── block.js
+│   └── complaint.js
+├── middleware/
+│   └── authenticate.js
+├── controllers/
+│   ├── authController.js
+│   ├── actionController.js
+│   ├── requestController.js
+│   ├── messageController.js
+│   ├── blockController.js
+│   └── complaintController.js
+├── services/
+│   └── emailService.js
+├── utils/
+│   └── validation.js
+├── app.js
+└── server.js
+
+
+
+
+#Key Features to Implement on Backend
+
+1.User Authentication and Profiles
+ 1.1 Email, Apple, Google, and Facebook login
+ 1.2 User registration and login (with JWT for authentication)
+ 1.3 User profiles with status (online/offline)
+ 1.4 Profile pictures and additional information
+
+2. Offline Entertainment
+ 2.1 Sex forfeits, tasks, and questions
+ 2.2 Poses and role-playing plots
+ 2.3 Sex cubes with different combinations
+
+3. Online Game
+ 3.1 Player matching and requests
+ 3.2 Chat functionality (text, voice, photo, and video sharing)
+ 3.3 Real-time notifications
+
+4.Additional Features
+ 4.1 Blocking and complaining about players
+ 4.2 Request cool-down and user suspension
+ 4.3 Email sending
+ 4.4 Latest technologies and best practices

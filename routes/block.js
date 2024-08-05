@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const authenticateToken = require("../middleware/authenticate");
+const { authenticateToken } = require("../middleware/authenticate");
 
 router.post("/", authenticateToken, async (req, res) => {
   try {
