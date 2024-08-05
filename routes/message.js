@@ -1,37 +1,30 @@
 // routes/message.js
 const express = require("express");
 const router = express.Router();
-const db = require("../models");
-const authenticateToken = require("../middleware/authenticate");
+const { authenticateToken } = require("../middleware/authenticate");
+const messageController = require("../controllers/messageController");
+const multer = require("multer");
+const path = require("path");
 
-router.post("/", authenticateToken, async (req, res) => {
-  try {
-    const message = await db.Message.create({
-      senderId: req.user.id,
-      receiverId: req.body.receiverId,
-      content: req.body.content,
-      type: req.body.type,
-    });
-    res.status(201).json(message);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 
-router.get("/:userId", authenticateToken, async (req, res) => {
-  try {
-    const messages = await db.Message.findAll({
-      where: {
-        [db.Sequelize.Op.or]: [
-          { senderId: req.user.id, receiverId: req.params.userId },
-          { senderId: req.params.userId, receiverId: req.user.id },
-        ],
-      },
-    });
-    res.status(200).json(messages);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+const upload = multer({ storage });
+
+// Define routes
+router.post(
+  "/send",
+  authenticateToken,
+  upload.single("media"),
+  messageController.sendMessage
+);
+router.get("/:recipientId", authenticateToken, messageController.getMessages);
 
 module.exports = router;
